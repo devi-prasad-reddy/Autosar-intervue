@@ -25,7 +25,9 @@
     }
     html { font-size: 16px; scroll-behavior: smooth; }
     body {
-      background: var(--bg);
+      background: radial-gradient(circle at 15% 20%, rgba(0,212,255,.18), transparent 18%),
+                  radial-gradient(circle at 85% 10%, rgba(124,58,237,.14), transparent 20%),
+                  linear-gradient(180deg, #070a14 0%, #0b0e17 35%, #111624 100%);
       color: var(--text);
       font-family: var(--body);
       min-height: 100vh;
@@ -71,12 +73,33 @@
       margin-bottom: .75rem;
     }
     .setup-title span { color: var(--accent); }
+    .hero-greeting {
+      font-family: var(--display);
+      font-size: clamp(2.75rem, 6vw, 5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      color: #ffffff;
+      text-align: center;
+      margin: 0 auto 1rem;
+      max-width: 100%;
+      text-shadow: 0 12px 30px rgba(0,0,0,.25);
+    }
     .setup-sub {
       color: var(--muted);
       font-size: 1rem;
       text-align: center;
-      margin-bottom: 3rem;
-      max-width: 500px;
+      margin-bottom: 2.5rem;
+      max-width: 580px;
+    }
+    .feedback-greeting {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
     }
     .setup-card {
       background: var(--panel);
@@ -455,7 +478,7 @@
 <div id="setup-screen">
   <div class="logo-badge">🔐 AUTOSAR Cybersecurity Interview Prep</div>
   <h1 class="setup-title">Technical Interview<br><span>Simulator</span></h1>
-  <p class="setup-sub">HI Arun</p>
+  <div class="hero-greeting">HI ARUN</div>
   <p class="setup-sub">155 expert-curated questions for the Tata Elxsi AUTOSAR &amp; Core Embedded Senior Engineer role.</p>
 
   <div class="stats-row">
@@ -545,6 +568,7 @@
     </div>
 
     <div class="feedback-card" id="feedback-card">
+      <div class="feedback-greeting" id="fb-greeting">Hi Arun, here's your evaluation.</div>
       <div class="feedback-header">
         <div class="score-circle" id="fb-score-circle"></div>
         <div>
@@ -1001,6 +1025,7 @@ Category context: ${category}`;
     const gradeMap = { 'Excellent':'grade-excellent', 'Good':'grade-good', 'Fair':'grade-fair', 'Poor':'grade-poor' };
     card.className = 'feedback-card show ' + (gradeMap[ev.grade] || 'grade-fair');
 
+    document.getElementById('fb-greeting').textContent = 'Hi Arun, here is your evaluation.';
     document.getElementById('fb-score-circle').textContent = ev.score + '/10';
     document.getElementById('fb-grade-pill').textContent = ev.grade;
     document.getElementById('fb-evaluation').textContent = ev.evaluation;
